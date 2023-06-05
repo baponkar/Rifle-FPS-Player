@@ -17,3 +17,5 @@
 5. Assign Culling Mask of MainCamera with Everything else layer.
 
 [Credits](/Assets/Credits.txt)
+
+Unity v2020.3.15f2 was used to develop this project.
