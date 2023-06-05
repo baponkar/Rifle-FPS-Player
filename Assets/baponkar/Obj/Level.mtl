@@ -1,0 +1,27 @@
+newmtl ProBuilderDefault
+map_Kd GridBox_Default.png
+Kd 1 1 1
+d 1
+
+newmtl Wall
+map_Kd wall_texture.png
+bump wall_texture_N.png
+Kd 1 1 1
+d 1
+
+newmtl Floor
+map_Kd concrete.png
+bump concrete_N.png
+Kd 1 1 1
+d 1
+
+newmtl Ramp
+Kd 1 1 1
+d 1
+
+newmtl Obstacle
+map_Kd concrete.png
+bump concrete_N.png
+Kd 1 1 1
+d 1
+
