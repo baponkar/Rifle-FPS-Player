@@ -24,9 +24,8 @@ public class ActiveWeapon : MonoBehaviour
     }
 
   
-    void FixedUpdate()
+    void Update()
     {
-
         if (Input.GetButtonDown("Fire1"))
         {
             weapon.StartFireing();
@@ -46,7 +45,7 @@ public class ActiveWeapon : MonoBehaviour
             weapon.StopFireing();
         }
 
-        if(Input.GetKeyDown(KeyCode.R) && weapon.ammoCount < weapon.clipSize)
+        if(Input.GetKeyDown(KeyCode.R) && weapon.ammoCount < weapon.clipSize && !weapon.reloading)
         {
             anim.SetTrigger("reload");
             StartCoroutine(Reload(1f));

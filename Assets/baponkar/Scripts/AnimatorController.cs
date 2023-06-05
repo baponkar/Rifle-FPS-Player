@@ -37,8 +37,6 @@ public class AnimatorController : MonoBehaviour
             anim.SetTrigger("inspect");
        
         anim.SetBool("draw", draw);
-        if (Input.GetKeyDown(KeyCode.R))
-            anim.SetTrigger("reload");
-        
+         
     }
 }

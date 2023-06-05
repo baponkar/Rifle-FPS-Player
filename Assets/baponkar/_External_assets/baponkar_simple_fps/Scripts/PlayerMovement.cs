@@ -45,7 +45,7 @@ namespace Baponkar.FPS.Simple
         }
 
         
-        void FixedUpdate()
+        void Update()
         {
             GroundCheck();
             Jump();
@@ -76,15 +76,16 @@ namespace Baponkar.FPS.Simple
             float z = Input.GetAxis("Vertical");
             movement = transform.right * x + transform.forward * z;
             
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                movement *= Time.fixedDeltaTime * runningSpeed;
+                movement *= Time.deltaTime * runningSpeed;
             }
             else
             {
-                movement *= Time.fixedDeltaTime * walkingSpeed;
+                movement *= Time.deltaTime * walkingSpeed;
             }
             controller.Move(movement);
+
             velocity += (Vector3.up * gravity) * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
         }

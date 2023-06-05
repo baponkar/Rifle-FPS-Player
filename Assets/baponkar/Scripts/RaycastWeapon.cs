@@ -74,7 +74,7 @@ public class RaycastWeapon : MonoBehaviour
         ammoCount--;
         foreach (ParticleSystem muzzle in muzzleFlash)
         {
-                muzzle.Emit(5);
+                muzzle.Emit(10);
         }
         Vector3 velocity = (raycastDestination.position - raycastOrigin.position).normalized * bulletSpeed;
         var bullet = CreateBullet(raycastOrigin.position, velocity);
@@ -133,7 +133,6 @@ public class RaycastWeapon : MonoBehaviour
         UpdateBullet(deltaTime);
     }
 
-    
     void RaycastSegment(Vector3 start, Vector3 end, Bullet bullet)
     {
         Vector3 direction = (end - start);
@@ -153,10 +152,8 @@ public class RaycastWeapon : MonoBehaviour
             {
                 PlayBulletFireSound(hitInfo.transform.GetComponent<AudioSource>(), hitClip);
 
-                Instantiate(bulletHole, hitInfo.point + new Vector3(0.0f,0.02f,-0.12f), Quaternion.LookRotation(hitInfo.normal));
+                Instantiate(bulletHole, hitInfo.point + new Vector3(0.01f,0.01f,-0.05f), Quaternion.LookRotation(hitInfo.normal));
                
-                
-
                 bullet.tracer.transform.position = hitInfo.point;
                 bullet.time = maxBulletLifeTime;
 
@@ -173,7 +170,6 @@ public class RaycastWeapon : MonoBehaviour
                 bullet.tracer.AddPosition(end);
         }
     }
-
 
     public void StartFireing()
     {
@@ -207,7 +203,6 @@ public class RaycastWeapon : MonoBehaviour
             {
                 audioSource.PlayOneShot(fireClips[Random.Range(0,fireClips.Length)]);
             }
-
         }
         else
         {

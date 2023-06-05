@@ -10,13 +10,17 @@ namespace Baponkar.FPS.Simple
         #region Variables
         AudioSource audioSource;
         PlayerMovement playerMovement;
-        public AudioClip[] footSteps;
+        public AudioClip[] grassFootSteps, gravelFootSteps, metalFootSteps, normalFootSteps;
         AudioClip clip;
         public AudioClip jumpClip;
+
+        [Tooltip("0- grass,1- gravel,2- metal,3- normal")]
+        [Range(0,3)]
+        public int groundType; // grass, gravel, metal, normal;
         #endregion
 
-        
-            
+
+
         void Start()
         {
             playerMovement = GetComponent<PlayerMovement>();
@@ -26,14 +30,7 @@ namespace Baponkar.FPS.Simple
         
         void Update()
         {
-            if(playerMovement.movement.magnitude > 0 && playerMovement.isGrounded)
-            {
-                clip = footSteps[Random.Range(0, footSteps.Length)];
-                if(!audioSource.isPlaying)
-                {
-                    audioSource.PlayOneShot(clip);
-                }
-            }
+           
 
             if(Input.GetKeyDown(KeyCode.Space))
             {
@@ -41,6 +38,35 @@ namespace Baponkar.FPS.Simple
                 {
                     audioSource.PlayOneShot(jumpClip);
                 }
+            }
+        }
+
+        public void FootStep()
+        {
+            switch (groundType)
+            {
+                case 0:
+                    clip = grassFootSteps[Random.Range(0, grassFootSteps.Length)];
+                    break;
+                case 1:
+                    clip = gravelFootSteps[Random.Range(0, gravelFootSteps.Length)];
+                    break;
+                case 2:
+                    clip = metalFootSteps[Random.Range(0, metalFootSteps.Length)];
+                    break;
+                case 3:
+                    clip = normalFootSteps[Random.Range(0, normalFootSteps.Length)];
+                    break;
+
+                default:
+                    clip = normalFootSteps[Random.Range(0, normalFootSteps.Length)];
+                    break;
+            }
+            
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(clip);
             }
         }
     }
