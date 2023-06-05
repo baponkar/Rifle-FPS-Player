@@ -7,3 +7,13 @@
 ## Video YT Demo of   - **[1.0](https://www.youtube.com/watch?v=ZgNYZBfuQmA)**
 
 ![Screenshots](/Screenshots/Screenshots.jpg)
+
+## Doc
+
+1. Create Two layers : Character and Weapon.
+2. Assign Player with Character layer.
+3. Assign ACRRifle1 with Weapon layer which will found inside of Armature of Player prefab.
+4. Assign Culling Mask of FPSCamera with Character and Weapon layer.
+5. Assign Culling Mask of MainCamera with Everything else layer.
+
+[Credits](/Assets/Credits.txt)
